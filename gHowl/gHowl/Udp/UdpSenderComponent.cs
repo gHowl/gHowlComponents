@@ -10,9 +10,8 @@ using Grasshopper.Kernel;
 using Grasshopper.Kernel.Data;
 using Grasshopper.Kernel.Types;
 using gHowl.Properties;
-#if WITH_OSC
 using Bespoke.Common.Osc;
-#endif
+
 
 namespace gHowl.Udp
 {
@@ -48,6 +47,7 @@ namespace gHowl.Udp
             pManager.Register_IntegerParam("Pattern", "#", @"The pattern:
   0 = sends data as ASCII text (7),
  10 = sends data as array of doubles (8)
+999 = Sends OSC Message
 ", 0, GH_ParamAccess.tree);
             pManager[2].Optional = true;
 
@@ -144,13 +144,13 @@ namespace gHowl.Udp
                     _message = _formatter.DoubleArray(nMessage, _message);
                     break;
 
-#if WITH_OSC
+
                 case SendPattern.OSC:
                     List<string> oscMessage = new List<string>();
                     DA.GetDataList<string>(3, oscMessage);
                     _message = BytesForOSCMessage(oscMessage);
                     break;
-#endif
+
 
                 default:
                     _message = new byte[] { byte.MinValue, byte.MaxValue};
@@ -165,7 +165,7 @@ namespace gHowl.Udp
             DA.SetData(0, "Data sent");
         }
 
-#if WITH_OSC
+
         private byte[] BytesForOSCMessage(List<string> oscMessage)
         {
             string oscAddress = "/GH/none"; //This is what was happening before. 
@@ -184,7 +184,7 @@ namespace gHowl.Udp
 
             return msg.ToByteArray();
         }
-#endif
+
 
         private bool SendMessages(byte[] _message, int length, IPEndPoint endpoint)
         {
