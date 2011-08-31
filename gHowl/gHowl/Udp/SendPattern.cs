@@ -10,9 +10,9 @@ namespace gHowl.Udp
         Text = 0,
         DoubleArray = 10,
 
-#if WITH_OSC
+
         OSC = 999
-#endif
+
     }
     
 }
