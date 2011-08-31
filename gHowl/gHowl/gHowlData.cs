@@ -27,6 +27,7 @@ namespace gHowl
             get
             {
                 return "r70";
+                return "r50";
             }
         }
 
