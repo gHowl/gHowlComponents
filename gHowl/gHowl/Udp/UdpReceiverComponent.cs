@@ -11,9 +11,9 @@ using Grasshopper;
 using System.Text;
 using System.Collections.Generic;
 
-#if WITH_OSC
+
 using Bespoke.Common.Osc;
-#endif
+
 
 namespace gHowl.Udp
 {
@@ -46,6 +46,7 @@ namespace gHowl.Udp
 
             pManager.Register_IntegerParam("Pattern", "#", @"The pattern:
 0 = Parse received bytes as text
+999 = OSC Message
 ", 0, GH_ParamAccess.tree);
             pManager[2].Optional = true;
         }
@@ -199,7 +200,7 @@ namespace gHowl.Udp
 
                     }
 
-#if WITH_OSC
+
                     else if (_pattern == ReceivePattern.OSC)
                     {
 
@@ -232,7 +233,7 @@ namespace gHowl.Udp
                         }
 
                     }
-#endif
+
 
 
                     if (_udpClient != null && _ip != null)

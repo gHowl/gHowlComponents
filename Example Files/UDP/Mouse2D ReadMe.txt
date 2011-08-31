@@ -1,1 +1,0 @@
-Unpack and place the UDP.zip contents in the Libraries folder of your processing sketchbook directory.
