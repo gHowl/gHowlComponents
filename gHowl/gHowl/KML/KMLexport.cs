@@ -20,7 +20,7 @@ namespace gHowl.KML
             pManager.Register_GeometryParam("Geometry", "G", "Geometry to export", GH_ParamAccess.tree);
 
             pManager.Register_PointParam("EAP_XYZ", "XYZ", "Anchor Point Model Coordinates", GH_ParamAccess.item);
-            pManager.Register_PointParam("EAP_GPS", "GPS", "Anchor Point Coordinates in D.D. Longitude, Latitude, Altitude", GH_ParamAccess.item);
+            pManager.Register_PointParam("EAP_GPS", "GEO", "Anchor Point Coordinates in D.D. Longitude, Latitude, Altitude", GH_ParamAccess.item);
             pManager.Register_StringParam("Altitude Mode", "A", "Altitude mode for KML File: absolute, clampToGround, or relativeToGround", "absolute", GH_ParamAccess.item);
             pManager[0].Optional = false;
             pManager[1].Optional = false;
@@ -36,7 +36,7 @@ namespace gHowl.KML
 
         public override Guid ComponentGuid
         {
-            get { return new Guid("7fde1e88-728f-43b2-a217-e312462dfa10"); }
+            get { return new Guid("{7fde1e88-728f-43b2-a217-e312462dfa10}"); }
         }
 
         protected override Bitmap Icon
@@ -68,22 +68,17 @@ namespace gHowl.KML
             }
 
             //Set up EAP 
-            //OnEarthAnchorPoint eap = new OnEarthAnchorPoint();
+           
             EarthAnchorPoint eap = new EarthAnchorPoint();
             eap.EarthBasepointLongitude = EAP_GPS.X;
             eap.EarthBasepointLatitude = EAP_GPS.Y;
             eap.EarthBasepointElevation = EAP_GPS.Z;
             eap.ModelBasePoint = EAP_XYZ;
-           // eap.m_model_basepoint.y = EAP_XYZ.Y;
-           // eap.m_model_basepoint.z = EAP_XYZ.Z;
-            //OnUnitSystem us = new OnUnitSystem(RhUtil.RhinoApp().ActiveDoc().UnitSystem());
+ 
             Rhino.UnitSystem us = new Rhino.UnitSystem();
-           // OnXform xf = new OnXform();
+           
             Transform xf = eap.GetModelToEarthTransform(us);
-           // eap.GetModelToEarthTransform(us);
-           // eap.
-           // eap.GetModelToEarthXform(us, ref xf);
-            //
+          
             geo = geoGoo.Duplicate();
 
             XmlTextWriter writer = new XmlTextWriter(file, System.Text.Encoding.UTF8);
@@ -98,7 +93,7 @@ namespace gHowl.KML
 
                 for (int j = 0; j < geo.get_Branch(i).Count; j++)
                 {
-                    //ptGPS.get_DataItem(ptGPS.Paths[i], j)
+                   
                     IGH_GeometricGoo geoGooObj = geo.get_DataItem(geo.Paths[i], j);
                     GeometryBase geoObj = GH_Convert.ToGeometryBase(geoGooObj);
 
@@ -217,6 +212,7 @@ namespace gHowl.KML
                             }
                             break;
                         case Rhino.DocObjects.ObjectType.Surface:
+                           // DA.SetData(0, "Surface Not Supported");
                             break;
                         case Rhino.DocObjects.ObjectType.Brep:
 
@@ -412,7 +408,6 @@ namespace gHowl.KML
         public Point3d processPt(Point3d pt, Transform xf)
         {
             Point3d ptON = new Point3d(pt.X, pt.Y, pt.Z);
-           // On3dPoint ptON = new On3dPoint(pt.X, pt.Y, pt.Z);
             ptON = xf * ptON; //where the magic happens
             Point3d ptOut = new Point3d(ptON.X, ptON.Y, ptON.Z);
             return ptOut;
