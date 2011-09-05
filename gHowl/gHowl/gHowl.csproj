@@ -269,11 +269,14 @@
     <Compile Include="ClosedXML\Excel\XLWSContentManager.cs" />
     <Compile Include="ClosedXML\Extensions.cs" />
     <Compile Include="ClosedXML\PathHelper.cs" />
-    <Compile Include="Geo\ElevationComponent.cs" />
-    <Compile Include="Geo\FormatGeoComponent.cs" />
-    <Compile Include="Geo\GeotoXYZComponent.cs" />
-    <Compile Include="Geo\XYZtoGeoComponent.cs" />
+    <Compile Include="GEO\ElevationComponent.cs" />
+    <Compile Include="GEO\FormatGeoComponent.cs" />
+    <Compile Include="GEO\GeotoXYZComponent.cs" />
+    <Compile Include="GEO\XYZtoGeoComponent.cs" />
     <Compile Include="gHowlData.cs" />
+    <Compile Include="KML\KMLStyleParameter.cs" />
+    <Compile Include="KML\KMLStyleComponent.cs" />
+    <Compile Include="KML\KMLStyleType.cs" />
     <Compile Include="KML\KMLexport.cs" />
     <Compile Include="OSC\OSCChannelComponent.cs" />
     <Compile Include="OSC\OSCDispatchComponent.cs" />
@@ -313,6 +316,7 @@
     <Content Include="Resources\adapter.png" />
     <None Include="Resources\pachubeOut.png" />
     <None Include="Resources\gHowl_elev.png" />
+    <None Include="Resources\KMLAttributes.png" />
     <Content Include="Resources\worldEdit.png" />
     <Content Include="Resources\worldIcon.png" />
     <None Include="Resources\xmlWrite.png" />
