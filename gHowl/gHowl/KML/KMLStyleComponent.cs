@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Grasshopper.Kernel;
 using System.Drawing;
+using gHowl.Properties;
 
 
 namespace gHowl.KML
@@ -35,6 +36,14 @@ namespace gHowl.KML
         public override Guid ComponentGuid
         {
             get { return new Guid("{8354046b-989b-4d61-a92d-e109bb53dad3}"); }
+        }
+
+        protected override Bitmap Icon
+        {
+            get
+            {
+                return Resources.KMLAttributes;
+            }
         }
     }
 }

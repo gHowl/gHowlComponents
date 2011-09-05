@@ -316,6 +316,7 @@
     <Content Include="Resources\adapter.png" />
     <None Include="Resources\pachubeOut.png" />
     <None Include="Resources\gHowl_elev.png" />
+    <None Include="Resources\KMLAttributes.png" />
     <Content Include="Resources\worldEdit.png" />
     <Content Include="Resources\worldIcon.png" />
     <None Include="Resources\xmlWrite.png" />
