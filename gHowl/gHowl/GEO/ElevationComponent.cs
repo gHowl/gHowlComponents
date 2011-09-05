@@ -48,7 +48,11 @@ namespace gHowl.Geo
                 url.Append(",");
                 url.Append(inPts[i].Value.X);
                 cnt++;
-                if (cnt == 55 || i == inPts.Count - 1)
+
+                //need a better way to throtle this condition
+                //Elevations API URLs can only be a Maximum of 2048 characters before URL Encoding
+                
+                if (cnt == 50 || i == inPts.Count - 1) 
                 {
 
                     url.Append(postUrl);
