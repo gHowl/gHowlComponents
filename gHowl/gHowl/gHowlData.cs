@@ -26,10 +26,7 @@ namespace gHowl
         {
             get
             {
-<<<<<<< HEAD
-                return "r70";
-=======
->>>>>>> 176df96f24a58d3a6ab99aca101182d184d7c404
+
                 return "r50";
             }
         }
