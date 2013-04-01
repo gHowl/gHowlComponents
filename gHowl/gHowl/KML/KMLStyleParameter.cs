@@ -10,11 +10,12 @@ namespace gHowl.KML
        
         protected override GH_GetterResult Prompt_Plural(ref System.Collections.Generic.List<KMLStyleType> values)
         {
-            if (this.Prompt_ManageCollection(values))
-            {
+            values = new System.Collections.Generic.List<KMLStyleType>();
+           // if (this.Prompt_ManageCollection(values))
+          //  {
                 return GH_GetterResult.success;
-            }
-            return GH_GetterResult.cancel;
+          //  }
+          //  return GH_GetterResult.cancel;
 
         }
 
@@ -32,7 +33,7 @@ namespace gHowl.KML
 
         public override Guid ComponentGuid
         {
-            get { return new Guid("{3c1cc17a-a426-46ec-8ee3-ca152185f46b}"); }
+            get { return new Guid("{bfc54567-2d1d-499f-b6c2-aa396397d792}"); }
         }
     }
 }

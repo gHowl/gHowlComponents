@@ -11,22 +11,30 @@ using Rhino.DocObjects;
 
 namespace gHowl.KML
 {
-    public class KMLexport : GH_Component
+    public class KMLexportComponent_OBSOLETE : GH_Component
     {
-        public KMLexport() : base("KML Exporter", "KML Out", "Export from Rhino model to KML format", "gHowl", "KML") { }
+        public KMLexportComponent_OBSOLETE() : base("KML Exporter [Obsolete]", "KML Out", "Export from Rhino model to KML format", "gHowl", "KML") { }
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.Register_StringParam("File Path", "F", "File to write to *.KML", GH_ParamAccess.item);
-            pManager.Register_GeometryParam("Geometry", "G", "Geometry to export", GH_ParamAccess.tree);
+            //pManager.Register_StringParam("File Path", "F", "File to write to *.KML", GH_ParamAccess.item);
+            pManager.AddTextParameter("File Path", "F", "File to write to *.KML", GH_ParamAccess.item);
+            //pManager.Register_GeometryParam("Geometry", "G", "Geometry to export", GH_ParamAccess.tree);
+            pManager.AddGeometryParameter("Geometry", "G", "Geometry to export", GH_ParamAccess.tree);
 
-            KMLStyleParameter param = new KMLStyleParameter();
-            param.AddPersistentData(new KMLStyleType());
-            pManager.RegisterParam(param,"Style","S","KML Object Style",GH_ParamAccess.item);
+            KMLStyleParameter_OBSOLETE param = new KMLStyleParameter_OBSOLETE();
+            //param.AddPersistentData(new KMLStyleType());
+            param.SetPersistentData(new KMLStyleType_OBSOLETE());
+            //pManager.RegisterParam(param,"Style","S","KML Object Style",GH_ParamAccess.item);
+            pManager.AddParameter(param, "Style", "S", "KML Object Style", GH_ParamAccess.item);
             //pManager.Register_GenericParam("Style", "S", "KML Object Attributes", GH_ParamAccess.item);
 
-            pManager.Register_PointParam("EAP_XYZ", "XYZ", "Anchor Point Model Coordinates", GH_ParamAccess.item);
-            pManager.Register_PointParam("EAP_GPS", "GEO", "Anchor Point Coordinates in D.D. Longitude, Latitude, Altitude", GH_ParamAccess.item);
-            pManager.Register_StringParam("Altitude Mode", "A", "Altitude mode for KML File: absolute, clampToGround, or relativeToGround", "absolute", GH_ParamAccess.item);
+            //pManager.Register_PointParam("EAP_XYZ", "XYZ", "Anchor Point Model Coordinates", GH_ParamAccess.item);
+            pManager.AddPointParameter("EAP_XYZ", "XYZ", "Anchor Point Model Coordinates", GH_ParamAccess.item);
+            //pManager.Register_PointParam("EAP_GPS", "GEO", "Anchor Point Coordinates in D.D. Longitude, Latitude, Altitude", GH_ParamAccess.item);
+            pManager.AddPointParameter("EAP_GPS", "GEO", "Anchor Point Coordinates in D.D. Longitude, Latitude, Altitude", GH_ParamAccess.item);
+            //pManager.Register_StringParam("Altitude Mode", "A", "Altitude mode for KML File: absolute, clampToGround, or relativeToGround", "absolute", GH_ParamAccess.item);
+            pManager.AddTextParameter("Altitude Mode", "A", "Altitude mode for KML File: absolute, clampToGround, or relativeToGround", GH_ParamAccess.item, "absolute");
+            
             pManager[0].Optional = false;
             pManager[1].Optional = false;
             pManager[2].Optional = true;
@@ -50,6 +58,7 @@ namespace gHowl.KML
             get
             {
                 return Resources.geIcon;
+                //return null;
             }
         }
 
@@ -60,7 +69,7 @@ namespace gHowl.KML
             GH_Structure<IGH_GeometricGoo> geoGoo, geo = new GH_Structure<IGH_GeometricGoo>();
             Point3d EAP_GPS = new Point3d();
             Point3d EAP_XYZ = new Point3d();
-            KMLStyleType style = new KMLStyleType();
+            KMLStyleType_OBSOLETE style = new KMLStyleType_OBSOLETE();
             string altMode = "";
             
             if ((!DA.GetData(0, ref file)) || file == null ||
@@ -76,7 +85,7 @@ namespace gHowl.KML
 
             if(!DA.GetData(2,ref style))
             {
-                style = new KMLStyleType();
+                style = new KMLStyleType_OBSOLETE();
             }
 
             //Set up EAP 
@@ -128,6 +137,7 @@ namespace gHowl.KML
                             Rhino.Geometry.Point pt = (Rhino.Geometry.Point)geoObj;
                             Point3d pt3d = new Point3d(pt.Location.X, pt.Location.Y, pt.Location.Z);
                             GH_Point ptOut = new GH_Point(processPt(pt3d, xf));
+                            
                             //DA.SetData(0, "<Point> " + ptOut.Value.X.ToString() + "," + ptOut.Value.Y.ToString() + "," + ptOut.Value.Z.ToString());
                             writer.WriteStartElement("Placemark");
                             writer.WriteElementString("name", "PT_" + j.ToString());
@@ -161,6 +171,7 @@ namespace gHowl.KML
                                     {
                                         Point3d ptOut2 = processPt(ptArr[p], xf);
                                         strCoo += ptOut2.X + "," + ptOut2.Y + "," + ptOut2.Z + " ";
+                                        AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, ptOut2.ToString());
                                     }
                                     writer.WriteElementString("coordinates", strCoo);
                                     writer.WriteEndElement(); // end ring
@@ -450,6 +461,17 @@ namespace gHowl.KML
             Point3d ptOut = new Point3d(ptON.X, ptON.Y, ptON.Z);
             return ptOut;
         }
+
+        public override GH_Exposure Exposure
+        {
+            get
+            {
+                return GH_Exposure.hidden;
+            }
+        }
+
+        
+
 
 
     }

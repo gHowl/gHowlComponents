@@ -9,12 +9,19 @@ namespace gHowl.KML
 {
     public class KMLStyleComponent : GH_Component
     {
-        public KMLStyleComponent() : base("KML Style","S","KML Object Attributes: Fill Color, Line Color, Line Width","gHowl","KML") { }
+        public KMLStyleComponent() : base("KML Style","S","KML Object Attributes: Fill Color, Line Color, Line Width, Object Name","gHowl","KML") { }
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.Register_ColourParam("Fill Color", "F", "The fill color for polygon objects", Color.White, GH_ParamAccess.item);
-            pManager.Register_ColourParam("Curve Color", "L", "The line color for curve objects", Color.Black, GH_ParamAccess.item);
-            pManager.Register_DoubleParam("Curve Width", "W", "Line Width",1.0, GH_ParamAccess.item);
+            pManager.AddColourParameter("Fill Color", "F", "The fill color for polygon objects", GH_ParamAccess.item, Color.White);
+            pManager.AddColourParameter("Curve Color", "L", "The line color for curve objects", GH_ParamAccess.item, Color.Black);
+            pManager.AddNumberParameter("Curve Width", "W", "Line Width", GH_ParamAccess.item, 1.0);
+            pManager.AddTextParameter("Name","N","Object Name",GH_ParamAccess.item,"gHowl");
+
+            pManager[0].Optional = true;
+            pManager[1].Optional = true;
+            pManager[2].Optional = true;
+            pManager[3].Optional = true;
+
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -28,14 +35,15 @@ namespace gHowl.KML
             fc = Color.White;
             lc = Color.Black;
             double w=0;
-            if (!DA.GetData(0, ref fc) || !DA.GetData(1, ref lc) || !DA.GetData(2, ref w)) { return; }
-            KMLStyleType style = new KMLStyleType(fc,lc,w);
+            string n = "";
+            if (!DA.GetData(0, ref fc) || !DA.GetData(1, ref lc) || !DA.GetData(2, ref w) || !DA.GetData(3, ref n)) { return; }
+            KMLStyleType style = new KMLStyleType(fc,lc,w,n);
             DA.SetData(0, style);
         }
 
         public override Guid ComponentGuid
         {
-            get { return new Guid("{8354046b-989b-4d61-a92d-e109bb53dad3}"); }
+            get { return new Guid("{26114b99-80c2-4e9e-91d3-a17ac8ed800d}"); }
         }
 
         protected override Bitmap Icon
