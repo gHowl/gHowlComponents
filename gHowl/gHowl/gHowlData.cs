@@ -26,7 +26,7 @@ namespace gHowl
         {
             get
             {
-                return "r50";
+                return "r51";
             }
         }
 
@@ -34,7 +34,7 @@ namespace gHowl
         {
             get
             {
-                return "gHowlcomponents@gmail.com";
+                return "gHowlcomponents@gmail.com, but its better to direct your queries to the gHowl group at http://www.grasshopper3d.com/groups/gHowl";
             }
         }
         public override string AssemblyDescription

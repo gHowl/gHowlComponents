@@ -10,14 +10,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>gHowl</RootNamespace>
     <AssemblyName>gHowl</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -68,18 +69,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Open XML SDK\V2.0\lib\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
-    <Reference Include="GH_IO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a29997d2e6b4f97, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Rhinoceros 4.0\Plug-ins\Grasshopper\GH_IO.dll</HintPath>
+    <Reference Include="GH_IO">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Grasshopper for Rhino 5\GH_IO.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Grasshopper, Version=1.0.0.19, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Grasshopper, Version=1.0.0.20, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Rhinoceros 4.0\Plug-ins\Grasshopper\Grasshopper.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Grasshopper for Rhino 5\Grasshopper.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RhinoCommon">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Rhinoceros 4.0\Plug-ins\Grasshopper\rh_common\RhinoCommon.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Grasshopper for Rhino 5\rh_common\RhinoCommon.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -274,10 +274,166 @@
     <Compile Include="GEO\GeotoXYZComponent.cs" />
     <Compile Include="GEO\XYZtoGeoComponent.cs" />
     <Compile Include="gHowlData.cs" />
-    <Compile Include="KML\KMLStyleParameter.cs" />
     <Compile Include="KML\KMLStyleComponent.cs" />
+    <Compile Include="KML\KMLStyleParameter.cs" />
     <Compile Include="KML\KMLStyleType.cs" />
-    <Compile Include="KML\KMLexport.cs" />
+    <Compile Include="KML\KMLStyleParameter_OBSOLETE.cs" />
+    <Compile Include="KML\KMLStyleComponent_OBSOLETE.cs" />
+    <Compile Include="KML\KMLStyleType_OBSOLETE.cs" />
+    <Compile Include="KML\KMLexportComponent_OBSOLETE.cs" />
+    <Compile Include="KML\KMLExportComponent.cs" />
+    <Compile Include="KML\SharpKml\Base\Angle.cs" />
+    <Compile Include="KML\SharpKml\Base\Color32.cs" />
+    <Compile Include="KML\SharpKml\Base\ElementEventArgs.cs" />
+    <Compile Include="KML\SharpKml\Base\ElementWalker.cs" />
+    <Compile Include="KML\SharpKml\Base\KmlAttributeAttribute.cs" />
+    <Compile Include="KML\SharpKml\Base\KmlElementAttribute.cs" />
+    <Compile Include="KML\SharpKml\Base\KmlFactory.cs" />
+    <Compile Include="KML\SharpKml\Base\KmlFormatter.cs" />
+    <Compile Include="KML\SharpKml\Base\KmlNamespaces.cs" />
+    <Compile Include="KML\SharpKml\Base\MathHelpers.cs" />
+    <Compile Include="KML\SharpKml\Base\Parser.cs" />
+    <Compile Include="KML\SharpKml\Base\Serializer.cs" />
+    <Compile Include="KML\SharpKml\Base\TypeBrowser.cs" />
+    <Compile Include="KML\SharpKml\Base\ValueConverter.cs" />
+    <Compile Include="KML\SharpKml\Base\Vector.cs" />
+    <Compile Include="KML\SharpKml\Base\XmlComponent.cs" />
+    <Compile Include="KML\SharpKml\Base\XmlExtractor.cs" />
+    <Compile Include="KML\SharpKml\Dom\Atom\Author.cs" />
+    <Compile Include="KML\SharpKml\Dom\Atom\Category.cs" />
+    <Compile Include="KML\SharpKml\Dom\Atom\Content.cs" />
+    <Compile Include="KML\SharpKml\Dom\Atom\Entry.cs" />
+    <Compile Include="KML\SharpKml\Dom\Atom\Feed.cs" />
+    <Compile Include="KML\SharpKml\Dom\Atom\Link.cs" />
+    <Compile Include="KML\SharpKml\Dom\Element.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\AbstractLatLonBox.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Container.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Data.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Description.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Document.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\ExtendedData.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Feature.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Folder.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\LatLonAltBox.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Lod.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\NetworkLink.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Placemark.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Region.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Schema.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\SchemaData.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\SimpleData.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\SimpleField.cs" />
+    <Compile Include="KML\SharpKml\Dom\Features\Snippet.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\AltitudeMode.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\ColorMode.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\CoordinateCollection.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\DisplayMode.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\GridOrigin.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\ItemIconStates.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\ListItemType.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\RefreshMode.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\Shape.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\StyleState.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\Unit.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\VectorType.cs" />
+    <Compile Include="KML\SharpKml\Dom\Fields\ViewRefreshMode.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\Alias.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\Geometry.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\InnerBoundary.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\LinearRing.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\LineString.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\Location.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\Model.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\MultipleGeometry.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\Orientation.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\OuterBoundary.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\Point.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\Polygon.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\ResourceMap.cs" />
+    <Compile Include="KML\SharpKml\Dom\Geometries\Scale.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\AnimatedUpdate.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\Enums.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\FlyTo.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\LatLonQuad.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\MultipleTrack.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\Option.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\Playlist.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\SimpleArrayData.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\SimpleArrayField.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\SoundCue.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\TimeSpan.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\Timestamp.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\Tour.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\TourControl.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\TourPrimitive.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\Track.cs" />
+    <Compile Include="KML\SharpKml\Dom\GX\Wait.cs" />
+    <Compile Include="KML\SharpKml\Dom\IBoundsInformation.cs" />
+    <Compile Include="KML\SharpKml\Dom\ICustomElement.cs" />
+    <Compile Include="KML\SharpKml\Dom\IHtmlContent.cs" />
+    <Compile Include="KML\SharpKml\Dom\Kml.cs" />
+    <Compile Include="KML\SharpKml\Dom\KmlObject.cs" />
+    <Compile Include="KML\SharpKml\Dom\Links\ChangeCollection.cs" />
+    <Compile Include="KML\SharpKml\Dom\Links\CreateCollection.cs" />
+    <Compile Include="KML\SharpKml\Dom\Links\DeleteCollection.cs" />
+    <Compile Include="KML\SharpKml\Dom\Links\Icon.cs" />
+    <Compile Include="KML\SharpKml\Dom\Links\Link.cs" />
+    <Compile Include="KML\SharpKml\Dom\Links\LinkSnippet.cs" />
+    <Compile Include="KML\SharpKml\Dom\Links\LinkType.cs" />
+    <Compile Include="KML\SharpKml\Dom\Links\NetworkLinkControl.cs" />
+    <Compile Include="KML\SharpKml\Dom\Links\Update.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\GroundOverlay.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\ImagePyramid.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\LatLonBox.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\Overlay.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\OverlayVector.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\PhotoOverlay.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\RotationVector.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\ScreenOverlay.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\ScreenVector.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\SizeVector.cs" />
+    <Compile Include="KML\SharpKml\Dom\Overlays\ViewVolume.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\BalloonStyle.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\BasicLink.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\ColorStyle.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\Hotspot.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\IconStyle.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\ItemIcon.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\LabelStyle.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\LineStyle.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\ListStyle.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\Pair.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\PolygonStyle.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\Style.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\StyleMapCollection.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\StyleSelector.cs" />
+    <Compile Include="KML\SharpKml\Dom\Styles\SubStyle.cs" />
+    <Compile Include="KML\SharpKml\Dom\Time\TimePrimitive.cs" />
+    <Compile Include="KML\SharpKml\Dom\Time\TimeSpan.cs" />
+    <Compile Include="KML\SharpKml\Dom\Time\Timestamp.cs" />
+    <Compile Include="KML\SharpKml\Dom\UnknownElement.cs" />
+    <Compile Include="KML\SharpKml\Dom\Url.cs" />
+    <Compile Include="KML\SharpKml\Dom\Views\AbstractView.cs" />
+    <Compile Include="KML\SharpKml\Dom\Views\Camera.cs" />
+    <Compile Include="KML\SharpKml\Dom\Views\LookAt.cs" />
+    <Compile Include="KML\SharpKml\Dom\Xal\AddressDetails.cs" />
+    <Compile Include="KML\SharpKml\Dom\Xal\AdministrativeArea.cs" />
+    <Compile Include="KML\SharpKml\Dom\Xal\Country.cs" />
+    <Compile Include="KML\SharpKml\Dom\Xal\Locality.cs" />
+    <Compile Include="KML\SharpKml\Dom\Xal\PostalCode.cs" />
+    <Compile Include="KML\SharpKml\Dom\Xal\SubAdministrativeArea.cs" />
+    <Compile Include="KML\SharpKml\Dom\Xal\Thoroughfare.cs" />
+    <Compile Include="KML\SharpKml\Engine\BoundingBox.cs" />
+    <Compile Include="KML\SharpKml\Engine\ElementExtensions.cs" />
+    <Compile Include="KML\SharpKml\Engine\EntityMapper.cs" />
+    <Compile Include="KML\SharpKml\Engine\FeatureExtensions.cs" />
+    <Compile Include="KML\SharpKml\Engine\FileHandler.cs" />
+    <Compile Include="KML\SharpKml\Engine\GeometryExtensions.cs" />
+    <Compile Include="KML\SharpKml\Engine\KmlFile.cs" />
+    <Compile Include="KML\SharpKml\Engine\LinkResolver.cs" />
+    <Compile Include="KML\SharpKml\Engine\StyleResolver.cs" />
+    <Compile Include="KML\SharpKml\Engine\UpdateExtensions.cs" />
+    <Compile Include="KML\SharpKml\Engine\UriExtensions.cs" />
     <Compile Include="OSC\OSCChannelComponent.cs" />
     <Compile Include="OSC\OSCDispatchComponent.cs" />
     <Compile Include="Pachube\PachubeReadComponent.cs" />
@@ -294,13 +450,15 @@
     <Compile Include="Udp\ClientIpTuple.cs" />
     <Compile Include="TestForSafeComponent.cs" />
     <Compile Include="SafeComponent.cs" />
+    <Compile Include="Udp\UdpReceiverComponent_OBSOLETE.cs" />
+    <Compile Include="Udp\UdpSenderComponent.cs" />
     <Compile Include="Udp\Formatter.cs" />
     <Compile Include="Udp\InternetConnectionComponent.cs" />
     <Compile Include="Udp\ReceivePattern.cs" />
     <Compile Include="Udp\SendPattern.cs" />
     <Compile Include="Udp\UdpHelper.cs" />
     <Compile Include="Udp\UdpReceiverComponent.cs" />
-    <Compile Include="Udp\UdpSenderComponent.cs" />
+    <Compile Include="Udp\UdpSenderComponent_OBSOLETE.cs" />
     <Compile Include="Xml\PathExtension.cs" />
     <Compile Include="Xml\XmlParser.cs" />
     <Compile Include="Xml\XmlWriter.cs" />
@@ -362,7 +520,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

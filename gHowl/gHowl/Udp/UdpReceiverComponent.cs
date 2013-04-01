@@ -29,26 +29,31 @@ namespace gHowl.Udp
         private object[] _networkText = null;
         private string _serviceMessage = null;
         ReceivePattern _pattern = ReceivePattern.Text;
+        private bool patternChanged = false;
 
 
         public UdpReceiverComponent()
             : base("UDP Receiver", ">UDP<", "Allows to receive data on the network", "gHowl", "UDP")
         {
+            this.Message = "UDP";
+            this.SetValue("UDP", true);
+            this.SetValue("OSC", false);
+            this.ValuesChanged();
         }
 
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.Register_StringParam("Address", "@", "The local IP address to listen at. If empty, the loopback address is used", GH_ParamAccess.tree);
+            pManager.AddTextParameter("Address", "@", "The local IP address to listen at. If empty, the loopback address is used", GH_ParamAccess.tree);
             pManager[0].Optional = true;
 
-            pManager.Register_IntegerParam("Port", "P", "The port number to listen at", 6002, GH_ParamAccess.tree);
+            pManager.AddIntegerParameter("Port", "P", "The port number to listen at", GH_ParamAccess.tree, 6002);
             pManager[1].Optional = true;
 
-            pManager.Register_IntegerParam("Pattern", "#", @"The pattern:
+        /*    pManager.AddIntegerParameter("Pattern", "#", @"The pattern:
 0 = Parse received bytes as text
 999 = OSC Message
-", 0, GH_ParamAccess.tree);
-            pManager[2].Optional = true;
+", GH_ParamAccess.tree, 0);
+            pManager[2].Optional = true; */
         }
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
@@ -67,19 +72,19 @@ namespace gHowl.Udp
           
             GH_Structure<GH_String> addrs;
             GH_Structure<GH_Integer> ports;
-            GH_Structure<GH_Integer> patterns;
+            //GH_Structure<GH_Integer> patterns;
 
             if ((!DA.GetDataTree(0, out addrs)) ||
-                (!DA.GetDataTree(1, out ports)) || ports == null || ports.IsEmpty ||
-                (!DA.GetDataTree(2, out patterns)) || patterns == null || patterns.IsEmpty
-                 )
+                (!DA.GetDataTree(1, out ports)) || ports == null || ports.IsEmpty )
+                
+                 
             {
                 StopReceiving();
                 return;
             }
             if (addrs.PathCount > 1 || addrs.DataCount > 1 ||
-                ports.PathCount != 1 || ports.DataCount != 1 ||
-                patterns.PathCount != 1 || patterns.DataCount != 1
+                ports.PathCount != 1 || ports.DataCount != 1 
+                //patterns.PathCount != 1 || patterns.DataCount != 1
                  )
             {
                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Only one port and one address per Owl are allowed. The first items of any list or tree will be used.");
@@ -87,7 +92,7 @@ namespace gHowl.Udp
             
             GH_Integer port = ports.get_FirstItem(false);
             GH_String address = addrs.get_FirstItem(false);
-            GH_Integer pattern = patterns.get_FirstItem(false);
+            //GH_Integer pattern = patterns.get_FirstItem(false);
             IPAddress parsedAdd;
             _serviceMessage = "";
             if (address == null)
@@ -100,6 +105,15 @@ namespace gHowl.Udp
                 return;
             }
 
+            if (this.GetValue("UDP", false))
+            {
+                _pattern = ReceivePattern.Text;
+            }
+            else if (this.GetValue("OSC", false))
+            {
+                _pattern = ReceivePattern.OSC;
+            }
+            /*
             if (pattern.Value != (int)_pattern){
 
                 if (Enum.IsDefined(typeof(ReceivePattern), pattern.Value))
@@ -112,7 +126,7 @@ namespace gHowl.Udp
                 }
             }
             
-
+            */
             if (_isReceiving)
             {
                 if (_messageReceived)
@@ -126,7 +140,7 @@ namespace gHowl.Udp
                     _serviceMessage += "No new message...\n";
                 }
 
-                if (_ip == null || port.Value != _ip.Port ||  !_ip.Address.Equals(parsedAdd))
+                if (_ip == null || port.Value != _ip.Port ||  !_ip.Address.Equals(parsedAdd) || patternChanged)
                 {
                     if (port.Value < 1)
                     {
@@ -138,6 +152,7 @@ namespace gHowl.Udp
                         if (ReceiveMessages(parsedAdd, port.Value))
                         {
                             _serviceMessage += string.Format("Switch to port {1} was successful\n", _ip.Address, _ip.Port);
+                            patternChanged = false;
                         }
                     }
                 }
@@ -355,7 +370,7 @@ namespace gHowl.Udp
         {
             get
             {
-                return new Guid("{5A093912-7A24-39E7-810C-797A143F3912}");
+                return new Guid("{5799867f-7573-4532-a3fb-51380a68d0aa}");
             }
         }
 
@@ -388,6 +403,48 @@ namespace gHowl.Udp
             {
                 return Resources.udp_receive;
             }
+        }
+
+        public override void AppendAdditionalMenuItems(System.Windows.Forms.ToolStripDropDown menu)
+        {
+            base.AppendAdditionalMenuItems(menu);
+
+            Menu_AppendItem(menu, "UDP", new EventHandler(this.Menu_UDPClicked), true, this.GetValue("UDP", true)).ToolTipText = "User Datagram Protocol";
+            Menu_AppendItem(menu, "OSC", new EventHandler(this.Menu_OSCClicked), true, this.GetValue("OSC", false)).ToolTipText = "Open Sound Control";
+            //Menu_AppendItem(menu, "Relative To Ground", new EventHandler(this.Menu_RelativeToGroundClicked), true, this.GetValue("RelativeToGround", false)).ToolTipText = "Interpret the altitude in meters relative to the terrain elevation.";
+        }
+
+        private void Menu_UDPClicked(object sender, EventArgs e)
+        {
+            //this.SetValue("Absolute", !this.GetValue("Absolute", false));
+            this.SetValue("UDP", true);
+            this.SetValue("OSC", false);
+
+
+            this.ExpireSolution(true);
+        }
+
+        private void Menu_OSCClicked(object sender, EventArgs e)
+        {
+            //this.SetValue("ClampToGround", !this.GetValue("ClampToGround", false));
+            this.SetValue("UDP", false);
+            this.SetValue("OSC", true);
+            this.ExpireSolution(true);
+        }
+
+        protected override void ValuesChanged()
+        {
+            if (this.GetValue("UDP", false))
+            {
+                this.Message = "UDP";
+            }
+            else if (this.GetValue("OSC", false))
+            {
+                this.Message = "OSC";
+            }
+
+            patternChanged = true;
+
         }
     }
 }

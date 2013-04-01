@@ -12,7 +12,7 @@ namespace gHowl.KML
     public class KMLStyleType : IGH_Goo, GH_ISerializable
     {
         //Fields
-        public string fillColor, lineColor;
+        public string fillColor, lineColor, name;
         public double lineWidth;
 
         // Default Constructor, sets the state to Unknown.
@@ -21,14 +21,16 @@ namespace gHowl.KML
             this.fillColor = ColorToHex(Color.White, 135);
             this.lineColor = ColorToHex(Color.Black, 255);
             this.lineWidth = 1.0;
+            this.name = "";
         }
 
         // Constructor with initial value
-        public KMLStyleType(Color fillC, Color lineC, double lineW)
+        public KMLStyleType(Color fillC, Color lineC, double lineW, string text)
         {
             this.fillColor = ColorToHex(fillC);
             this.lineColor = ColorToHex(lineC);
             this.lineWidth = lineW;
+            this.name = text;
 
         }
 
@@ -49,6 +51,7 @@ namespace gHowl.KML
             this.fillColor = KMLStyleSource.fillColor;
             this.lineColor = KMLStyleSource.lineColor;
             this.lineWidth = KMLStyleSource.lineWidth;
+            this.name = KMLStyleSource.name;
         }
 
        
@@ -92,7 +95,7 @@ namespace gHowl.KML
 
         public string TypeDescription
         {
-            get { return "KML Object Attributes (Fill Color, Line Color, Line Width)"; }
+            get { return "KML Object Attributes (Fill Color, Line Color, Line Width, Name)"; }
         }
 
         public string TypeName
@@ -112,7 +115,7 @@ namespace gHowl.KML
 
         public override string ToString()
         {
-            return ("KML Style (" + this.fillColor+", "+this.lineColor+", "+this.lineWidth+")");
+            return ("KML Style (" + this.fillColor+", "+this.lineColor+", "+this.lineWidth+","+this.name+")");
         }
 
  

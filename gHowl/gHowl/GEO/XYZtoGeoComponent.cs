@@ -32,11 +32,13 @@ namespace gHowl.Geo
         {
             get { return new Guid("7251a345-6b2e-4d21-bdb8-3b26176b21d8"); }
         }
+
         protected override Bitmap Icon
         {
             get
             {
                 return Resources.worldEdit;
+                
             }
         }
 

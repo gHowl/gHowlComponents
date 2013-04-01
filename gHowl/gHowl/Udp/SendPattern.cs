@@ -9,8 +9,6 @@ namespace gHowl.Udp
     { 
         Text = 0,
         DoubleArray = 10,
-
-
         OSC = 999
 
     }

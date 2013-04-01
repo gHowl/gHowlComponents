@@ -2,21 +2,21 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <StartAction>Program</StartAction>
-    <StartProgram>C:\Program Files\Rhinoceros 4.0\System\rhino4.exe</StartProgram>
+    <StartProgram>C:\Program Files\Rhinoceros 5.0 (64-bit)\System\Rhino.exe</StartProgram>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug(x86)|AnyCPU' ">
     <StartAction>Program</StartAction>
-    <StartProgram>C:\Program Files (x86)\Rhinoceros 4.0\System\rhino4.exe</StartProgram>
+    <StartProgram>C:\Program Files\Rhinoceros 5.0 (64-bit)\System\Rhino.exe</StartProgram>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <StartAction>Program</StartAction>
-    <StartProgram>C:\Program Files\Rhinoceros 4.0\System\rhino4.exe</StartProgram>
+    <StartProgram>C:\Program Files\Rhinoceros 5.0 (64-bit)\System\Rhino.exe</StartProgram>
   </PropertyGroup>
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <ReferencePath>C:\Program Files (x86)\Rhinoceros 4.0\System\;C:\Program Files (x86)\Rhinoceros 4.0\Plug-ins\Grasshopper\</ReferencePath>
+    <ReferencePath>C:\Program Files\Rhinoceros 5.0 (64-bit)\System\;C:\Program Files (x86)\Grasshopper for Rhino 5\</ReferencePath>
     <PublishUrlHistory />
     <InstallUrlHistory />
     <SupportUrlHistory />

@@ -137,6 +137,7 @@ namespace gHowl.Pachube
             get
             {
                 return Resources.pachubeOut;
+                //return null;
             }
         }
 
