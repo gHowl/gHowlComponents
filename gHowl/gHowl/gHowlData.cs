@@ -26,7 +26,7 @@ namespace gHowl
         {
             get
             {
-                return "r51";
+                return "r" + Assembly.GetName().Version.Major;
             }
         }
 

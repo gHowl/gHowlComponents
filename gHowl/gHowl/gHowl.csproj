@@ -34,6 +34,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,21 +67,16 @@
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Open XML SDK\V2.0\lib\DocumentFormat.OpenXml.dll</HintPath>
-    </Reference>
-    <Reference Include="GH_IO">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Grasshopper for Rhino 5\GH_IO.dll</HintPath>
+    <Reference Include="GH_IO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a29997d2e6b4f97, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grasshopper.0.9.76\lib\net35\GH_IO.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Grasshopper, Version=1.0.0.20, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Grasshopper for Rhino 5\Grasshopper.dll</HintPath>
+    <Reference Include="Grasshopper, Version=1.0.0.20, Culture=neutral, PublicKeyToken=dda4f5ec2cd80803, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grasshopper.0.9.76\lib\net35\Grasshopper.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="RhinoCommon">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Grasshopper for Rhino 5\rh_common\RhinoCommon.dll</HintPath>
+    <Reference Include="RhinoCommon, Version=5.1.30000.16, Culture=neutral, PublicKeyToken=552281e97c755530, processorArchitecture=MSIL">
+      <HintPath>..\packages\RhinoCommon.5.12.50810.13095\lib\net35\RhinoCommon.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -106,169 +103,6 @@
     <Compile Include="BespokeOSC\TransmissionType.cs" />
     <Compile Include="BespokeOSC\UdpDataReceivedEventArgs.cs" />
     <Compile Include="BespokeOSC\UdpServer.cs" />
-    <Compile Include="ClosedXML\ExcelHelper.cs" />
-    <Compile Include="ClosedXML\Excel\Cells\IXLCell.cs" />
-    <Compile Include="ClosedXML\Excel\Cells\IXLCells.cs" />
-    <Compile Include="ClosedXML\Excel\Cells\XLCell.cs" />
-    <Compile Include="ClosedXML\Excel\Cells\XLCells.cs" />
-    <Compile Include="ClosedXML\Excel\Cells\XLCellsCollection.cs" />
-    <Compile Include="ClosedXML\Excel\Cells\XLCell_DotNetSpecific.cs" />
-    <Compile Include="ClosedXML\Excel\Charts\IXLChart.cs" />
-    <Compile Include="ClosedXML\Excel\Charts\IXLCharts.cs" />
-    <Compile Include="ClosedXML\Excel\Charts\IXLDrawing.cs" />
-    <Compile Include="ClosedXML\Excel\Charts\XLChart.cs" />
-    <Compile Include="ClosedXML\Excel\Charts\XLCharts.cs" />
-    <Compile Include="ClosedXML\Excel\Charts\XLDrawing.cs" />
-    <Compile Include="ClosedXML\Excel\Columns\IXLColumn.cs" />
-    <Compile Include="ClosedXML\Excel\Columns\IXLColumns.cs" />
-    <Compile Include="ClosedXML\Excel\Columns\XLColumn.cs" />
-    <Compile Include="ClosedXML\Excel\Columns\XLColumnCollection.cs" />
-    <Compile Include="ClosedXML\Excel\Columns\XLColumnParameters.cs" />
-    <Compile Include="ClosedXML\Excel\Columns\XLColumns.cs" />
-    <Compile Include="ClosedXML\Excel\Coordinates\IXLAddress.cs" />
-    <Compile Include="ClosedXML\Excel\Coordinates\XLAddress.cs" />
-    <Compile Include="ClosedXML\Excel\Coordinates\XLSheetPoint.cs" />
-    <Compile Include="ClosedXML\Excel\Coordinates\XLSheetRange.cs" />
-    <Compile Include="ClosedXML\Excel\CustomProperties\IXLCustomProperties.cs" />
-    <Compile Include="ClosedXML\Excel\CustomProperties\IXLCustomProperty.cs" />
-    <Compile Include="ClosedXML\Excel\CustomProperties\XLCustomProperties.cs" />
-    <Compile Include="ClosedXML\Excel\CustomProperties\XLCustomProperty.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\IXLDataValidation.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\IXLDataValidations.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\IXLValidationCriteria.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\XLDataValidation.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\XLDataValidations.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\XLDateCriteria.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\XLDecimalCriteria.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\XLTextLengthCriteria.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\XLTimeCriteria.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\XLValidationCriteria.cs" />
-    <Compile Include="ClosedXML\Excel\DataValidation\XLWholeNumberCriteria.cs" />
-    <Compile Include="ClosedXML\Excel\EnumConverter.cs" />
-    <Compile Include="ClosedXML\Excel\Hyperlinks\IXLHyperlinks.cs" />
-    <Compile Include="ClosedXML\Excel\Hyperlinks\XLHyperlinks.cs" />
-    <Compile Include="ClosedXML\Excel\Hyperlinks\XLHyperlink_Internal.cs" />
-    <Compile Include="ClosedXML\Excel\Hyperlinks\XLHyperlink_public.cs" />
-    <Compile Include="ClosedXML\Excel\IXLOutline.cs" />
-    <Compile Include="ClosedXML\Excel\IXLSheetProtection.cs" />
-    <Compile Include="ClosedXML\Excel\IXLSheetView.cs" />
-    <Compile Include="ClosedXML\Excel\IXLTheme.cs" />
-    <Compile Include="ClosedXML\Excel\IXLWorksheet.cs" />
-    <Compile Include="ClosedXML\Excel\IXLWorksheets.cs" />
-    <Compile Include="ClosedXML\Excel\NamedRanges\IXLNamedRange.cs" />
-    <Compile Include="ClosedXML\Excel\NamedRanges\IXLNamedRanges.cs" />
-    <Compile Include="ClosedXML\Excel\NamedRanges\XLNamedRange.cs" />
-    <Compile Include="ClosedXML\Excel\NamedRanges\XLNamedRanges.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\IXLHeaderFooter.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\IXLHFItem.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\IXLMargins.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\IXLPageSetup.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\IXLPrintAreas.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\XLHeaderFooter.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\XLHFItem.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\XLHFText.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\XLMargins.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\XLPageSetup.cs" />
-    <Compile Include="ClosedXML\Excel\PageSetup\XLPrintAreas.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\IXLPivotField.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\IXLPivotFields.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\IXLPivotTable.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\IXLPivotTables.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\PivotValues\IXLPivotValue.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\PivotValues\IXLPivotValueCombination.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\PivotValues\IXLPivotValueFormat.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\PivotValues\IXLPivotValues.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\PivotValues\XLPivotValue.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\PivotValues\XLPivotValueCombination.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\PivotValues\XLPivotValueFormat.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\PivotValues\XLPivotValues.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\XLPivotField.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\XLPivotFields.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\XLPivotTable.cs" />
-    <Compile Include="ClosedXML\Excel\PivotTables\XLPivotTables.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\IXLRange.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\IXLRangeAddress.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\IXLRangeBase.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\IXLRangeColumn.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\IXLRangeColumns.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\IXLRangeRow.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\IXLRangeRows.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\IXLRanges.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\Sort\IXLSortElement.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\Sort\IXLSortElements.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\Sort\XLSortElement.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\Sort\XLSortElements.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\XLRange.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\XLRangeAddress.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\XLRangeBase.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\XLRangeColumn.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\XLRangeColumns.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\XLRangeParameters.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\XLRangeRow.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\XLRangeRows.cs" />
-    <Compile Include="ClosedXML\Excel\Ranges\XLRanges.cs" />
-    <Compile Include="ClosedXML\Excel\RichText\IXLPhonetic.cs" />
-    <Compile Include="ClosedXML\Excel\RichText\IXLPhonetics.cs" />
-    <Compile Include="ClosedXML\Excel\RichText\IXLRichString.cs" />
-    <Compile Include="ClosedXML\Excel\RichText\IXLRichText.cs" />
-    <Compile Include="ClosedXML\Excel\RichText\XLPhonetic.cs" />
-    <Compile Include="ClosedXML\Excel\RichText\XLPhonetics.cs" />
-    <Compile Include="ClosedXML\Excel\RichText\XLRichString.cs" />
-    <Compile Include="ClosedXML\Excel\RichText\XLRichText.cs" />
-    <Compile Include="ClosedXML\Excel\Rows\IXLRow.cs" />
-    <Compile Include="ClosedXML\Excel\Rows\IXLRows.cs" />
-    <Compile Include="ClosedXML\Excel\Rows\XLRow.cs" />
-    <Compile Include="ClosedXML\Excel\Rows\XLRowCollection.cs" />
-    <Compile Include="ClosedXML\Excel\Rows\XLRowParameters.cs" />
-    <Compile Include="ClosedXML\Excel\Rows\XLRows.cs" />
-    <Compile Include="ClosedXML\Excel\Style\Colors\IXLColor.cs" />
-    <Compile Include="ClosedXML\Excel\Style\Colors\XLColor_Internal.cs" />
-    <Compile Include="ClosedXML\Excel\Style\Colors\XLColor_Public.cs" />
-    <Compile Include="ClosedXML\Excel\Style\Colors\XLColor_Static.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLAlignment.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLBorder.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLFill.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLFont.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLFontBase.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLNumberFormat.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLNumberFormatBase.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLProtection.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLStyle.cs" />
-    <Compile Include="ClosedXML\Excel\Style\IXLStylized.cs" />
-    <Compile Include="ClosedXML\Excel\Style\XLAlignment.cs" />
-    <Compile Include="ClosedXML\Excel\Style\XLBorder.cs" />
-    <Compile Include="ClosedXML\Excel\Style\XLFill.cs" />
-    <Compile Include="ClosedXML\Excel\Style\XLFont.cs" />
-    <Compile Include="ClosedXML\Excel\Style\XLNumberFormat.cs" />
-    <Compile Include="ClosedXML\Excel\Style\XLProtection.cs" />
-    <Compile Include="ClosedXML\Excel\Style\XLStyle.cs" />
-    <Compile Include="ClosedXML\Excel\Style\XLStylizedContainer.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\IXLTable.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\IXLTableField.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\IXLTableRow.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\IXLTableRows.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\IXLTables.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\XLTable.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\XLTableField.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\XLTableRow.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\XLTableRows.cs" />
-    <Compile Include="ClosedXML\Excel\Tables\XLTables.cs" />
-    <Compile Include="ClosedXML\Excel\XLAddressLight.cs" />
-    <Compile Include="ClosedXML\Excel\XLOutline.cs" />
-    <Compile Include="ClosedXML\Excel\XLSheetProtection.cs" />
-    <Compile Include="ClosedXML\Excel\XLSheetView.cs" />
-    <Compile Include="ClosedXML\Excel\XLTheme.cs" />
-    <Compile Include="ClosedXML\Excel\XLWorkbook.cs" />
-    <Compile Include="ClosedXML\Excel\XLWorkbookProperties.cs" />
-    <Compile Include="ClosedXML\Excel\XLWorkbook_Load.cs" />
-    <Compile Include="ClosedXML\Excel\XLWorkbook_Save.cs" />
-    <Compile Include="ClosedXML\Excel\XLWorkbook_Save.NestedTypes.cs" />
-    <Compile Include="ClosedXML\Excel\XLWorksheet.cs" />
-    <Compile Include="ClosedXML\Excel\XLWorksheetInternals.cs" />
-    <Compile Include="ClosedXML\Excel\XLWorksheets.cs" />
-    <Compile Include="ClosedXML\Excel\XLWSContentManager.cs" />
-    <Compile Include="ClosedXML\Extensions.cs" />
-    <Compile Include="ClosedXML\PathHelper.cs" />
     <Compile Include="GEO\ElevationComponent.cs" />
     <Compile Include="GEO\FormatGeoComponent.cs" />
     <Compile Include="GEO\GeotoXYZComponent.cs" />
@@ -438,13 +272,12 @@
     <Compile Include="OSC\OSCDispatchComponent.cs" />
     <Compile Include="Pachube\PachubeReadComponent.cs" />
     <Compile Include="Pachube\PachubeUpdateComponent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Spreadsheet\SpreadsheetReaderComponent.cs" />
-    <Compile Include="Spreadsheet\SpreadsheetWriterComponent.cs" />
     <Compile Include="Udp\Action.cs" />
     <Compile Include="Udp\AdapterDiscoverer.cs" />
     <Compile Include="Udp\ClientIpTuple.cs" />
@@ -467,6 +300,7 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\howl.png" />
   </ItemGroup>
   <ItemGroup>
@@ -532,4 +366,13 @@
     <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)\$(ProjectName).gha"
 Erase "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\RhinoCommon.5.12.50810.13095\build\net35\RhinoCommon.targets" Condition="Exists('..\packages\RhinoCommon.5.12.50810.13095\build\net35\RhinoCommon.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\RhinoCommon.5.12.50810.13095\build\net35\RhinoCommon.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RhinoCommon.5.12.50810.13095\build\net35\RhinoCommon.targets'))" />
+    <Error Condition="!Exists('..\packages\Grasshopper.0.9.76\build\net35\Grasshopper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grasshopper.0.9.76\build\net35\Grasshopper.targets'))" />
+  </Target>
+  <Import Project="..\packages\Grasshopper.0.9.76\build\net35\Grasshopper.targets" Condition="Exists('..\packages\Grasshopper.0.9.76\build\net35\Grasshopper.targets')" />
 </Project>
